@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - '4000:4000'
+
+    # map project folder to container's /code folder so changes in the project are refrected in the container directory
+    volumes:
+      - ./:/code
+
+      # override Dockerfile's command to run nodemon instead of node directly, to handle file changes
+    command: npm run dev
